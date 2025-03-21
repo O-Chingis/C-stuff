@@ -3,29 +3,27 @@
 using std::cout;
 using std::cin;
 using std::endl;
+using std::string;
 
-class CountPlus1 {
-	int num; //private part
-public: 
-	void set_num(int p);
-	int get_num();
+class Puparia {
+    int age;  
+public:
+    void set_e(int Age);
+    int get_e() { 
+        return age; 
+    }
 };
 
-void CountPlus1::set_num(int p){
-	num=p+10; 
-}
-int CountPlus1::get_num(){
-	return num;
+void Puparia::set_e(int Age) {
+    age = Age;
 }
 
-int main(){
-	CountPlus1 a, b;
-	a.set_num(1);
-	b.set_num(91);
+int main() {
+    Puparia obj1;
+    obj1.set_e(18);
 
-	cout<<a.get_num()<<endl;
-	cout<<b.get_num()<<endl;
+    cout << "Возраст: " << obj1.get_e() << endl;
 
-	system("pause");
-return 0;
+    cin.get();
+    return 0;
 }
