@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <locale>
 
 using std::cout;
 using std::endl;
@@ -48,6 +49,8 @@ void printArea(const Shape& shape) {
 }
 
 int main() {
+    setlocale(LC_ALL, "Russian");
+
     Rectangle rect(5, 3);
     Circle circ(4);
 
@@ -63,6 +66,6 @@ int main() {
     cout << "Площадь через базовый класс:" << endl;
     cout << "Прямоугольник: " << shape1->area() << endl;
     cout << "Круг: " << shape2->area() << endl;
-
+	system("pause");
     return 0;
 }

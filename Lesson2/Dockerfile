@@ -2,7 +2,15 @@
 FROM gcc:latest
 
 # Устанавливаем дополнительные инструменты
-RUN apt-get update && apt-get install -y cmake gdb
+RUN apt-get update && apt-get install -y cmake gdb locales \
+    && sed -i /ru_RU.UTF-8/s/^# //g /etc/locale.gen \
+    && locale-gen ru_RU.UTF-8 \
+    && export LANG=ru_RU.UTF-8 \
+    && export LC_ALL=ru_RU.UTF-8
+
+# Меняем кодировку на РУ
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
 
 # Устанавливаем рабочую директорию внутри контейнера
 WORKDIR /app
@@ -12,6 +20,7 @@ COPY . /app
 
 # Компилируем код
 RUN g++ -o my_program Lesson2.cpp
+RUN chmod +x my_program
 
 # Указываем команду по умолчанию (запуск программы)
 CMD ["./my_program"]
